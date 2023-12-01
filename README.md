@@ -3,7 +3,7 @@
     <b>WorldBorder plugin for Pocketmine-MP</b>
 
 # Description
-Add a world border to your [Pocketmine-MP](https://github.com/pmmp/PocketMine-MP) server with [WorldBorderPE](https://github.com/Terpz710/WorldBorderPE)! You can set world borders for different world and you can set unlimited WB!
+Add a world border to your [Pocketmine-MP](https://github.com/pmmp/PocketMine-MP) server with [BorderLimitPE](https://github.com/Terpz710/WorldBorderPE)! You can set world borders for different world and you can set up unlimited of world borders!
 
 # DEV
 

@@ -3,7 +3,14 @@
     <b>WorldBorder plugin for Pocketmine-MP</b>
 
 # Description
-Add a world border to your [Pocketmine-MP](https://github.com/pmmp/PocketMine-MP) server with [BorderLimitPE](https://github.com/Terpz710/WorldBorderPE)! You can set world borders for different world and you can set up unlimited of world borders!
+Add a world border to your [Pocketmine-MP](https://github.com/pmmp/PocketMine-MP) server with [BorderLimitPE](https://github.com/Terpz710/WorldBorderPE)! With this plugin you can configure a world border within the config.yml to set a world border with a min and max radius.
+
+# Features
+
+* World border for each world
+* Easy configuration
+* Configurable messages
+* Players gets pushed back if they pass the world border
 
 # DEV
 

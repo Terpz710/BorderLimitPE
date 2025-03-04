@@ -5,7 +5,8 @@
     "require": {
         "pocketmine/pocketmine-mp": "^5.0.0",
         "cortexpe/commando": "*",
-        "poggit/libasynql": "*"
+        "poggit/libasynql": "*",
+        "terpz710/libmessages": "*"
     },
     "autoload": {
         "psr-0": {

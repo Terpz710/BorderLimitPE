@@ -20,6 +20,8 @@ final class Loader extends PluginBase {
     }
 
     protected function onEnable() : void{
+        $this->saveDefaultConfig();
+        
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
         if (!PacketHooker::isRegistered()) {

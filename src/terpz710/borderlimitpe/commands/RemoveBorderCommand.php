@@ -33,11 +33,11 @@ class RemoveBorderCommand extends BaseCommand {
         $world = Server::getInstance()->getWorldManager()->getWorldByName($worldName);
 
         if ($world === null) {
-            $sender->sendMessage("World " . $worldName . " does not exist or is not loaded!");
+            $sender->sendMessage("World §c" . $worldName . "§f does not exist or is not loaded!");
             return;
         }
 
         WorldBorderAPI::getInstance()->removeBorder($world);
-        $sender->sendMessage("Successfully removed the border for world " . $worldName);
+        $sender->sendMessage("Successfully removed the border for world §e" . $worldName);
     }
 }

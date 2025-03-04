@@ -1,0 +1,15 @@
+{
+    "name": "terpz710/borderlimitpe",
+    "type": "project",
+    "license": "Apache License 2.0",
+    "require": {
+        "pocketmine/pocketmine-mp": "^5.0.0",
+        "cortexpe/commando": "*",
+        "poggit/libasynql": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "BorderLimitPE\\": "src/BorderLimitPE"
+        }
+    }
+}

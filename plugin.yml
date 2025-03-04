@@ -1,0 +1,9 @@
+name: BorderLimitPE
+version: 1.0.1
+author: Terpz710
+api: 5.3.0
+main: terpz710\borderlimitpe\Loader
+
+permissions:
+  borderlimitpe.cmd:
+    default: op

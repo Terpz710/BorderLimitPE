@@ -11,5 +11,7 @@ projects:
          version: ^4.2.3
        - src: ACM-PocketMine-MP/Commando/Commando
          version: ^3.2.1
+       - src: Terpz710/libMessages/libMessages
+         version: ^1.0.0
     lint: false
 ...

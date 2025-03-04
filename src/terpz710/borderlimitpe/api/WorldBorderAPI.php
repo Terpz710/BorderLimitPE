@@ -89,7 +89,11 @@ final class WorldBorderAPI {
     public function removeBorder(World $world) : void{
         $worldName = $world->getFolderName();
 
-        $this->db->executeChange("world_borders.remove", ["world" => $worldName]);
+        $this->db->executeSelect("world_borders.get", ["world" => $worldName], function (array $rows) use ($worldName) {
+            if (!empty($rows)) {
+                $this->db->executeChange("world_borders.remove", ["world" => $worldName]);
+            }
+        });
     }
 
     public function close() : void{

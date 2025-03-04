@@ -37,7 +37,7 @@ final class Loader extends PluginBase {
             new RemoveBorderCommand($this, "removeborder", "Removes the world border for the current or specified world")
         ]);
 
-        $this->db = new WorldBorderAPI();
+        $this->db = WorldBorderAPI::getInstance();
         $this->db->init();
     }
 

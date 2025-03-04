@@ -55,7 +55,7 @@ final class WorldBorderAPI {
 
     public function startBorderSetup(Player $player) : void{
         $this->borderSetup[$player->getUniqueId()->getBytes()] = [];
-        $player->sendMessage("§aTap two points to set the world border!");
+        $player->sendMessage("Break two blocks to set the world border!");
     }
 
     public function setPoint(Player $player, Vector3 $pos) : void{
@@ -67,7 +67,7 @@ final class WorldBorderAPI {
 
         if (!isset($this->borderSetup[$id][0])) {
             $this->borderSetup[$id][0] = $pos;
-            $player->sendMessage("§aFirst point set at §e{$pos->getX()}, {$pos->getY()}, {$pos->getZ()}§a. Now tap the second point!");
+            $player->sendMessage("First point set at §a{$pos->getX()}, {$pos->getY()}, {$pos->getZ()}§f. Now break the second block to set the second point!");
         } else {
             $this->borderSetup[$id][1] = $pos;
             $this->saveBorder($player->getWorld(), $this->borderSetup[$id][0], $pos);

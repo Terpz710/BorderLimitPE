@@ -25,6 +25,7 @@ final class Loader extends PluginBase {
 
     protected function onEnable() : void{
         $this->saveDefaultConfig();
+        $this->saveResource("messages.yml");
         
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 

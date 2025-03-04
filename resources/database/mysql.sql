@@ -35,6 +35,6 @@
     -- #}
 
     -- #{ get_all
-        SELECT * FROM world_borders;
+        SELECT world, min_x, max_x, min_z, max_z FROM world_borders;
     -- #}
 -- #}

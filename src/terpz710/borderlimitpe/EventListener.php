@@ -6,6 +6,9 @@ namespace terpz710\borderlimitpe;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\block\BlockBreakEvent;
+
+use pocketmine\math\Vector3;
 
 use pocketmine\player\Player;
 
@@ -32,5 +35,18 @@ class EventListener implements Listener {
                 $player->sendMessage("§cYou cannot leave the world border!");
             }
         });
+    }
+
+    public function onBlockBreak(BlockBreakEvent $event) : void{
+        $player = $event->getPlayer();
+        $block = $event->getBlock();
+        $pos = new Vector3($block->getPosition()->getX(), $block->getPosition()->getY(), $block->getPosition()->getZ());
+
+        $borderAPI = WorldBorderAPI::getInstance();
+
+        if ($borderAPI->isSettingBorder($player)) {
+            $event->cancel();
+            $borderAPI->setPoint($player, $pos);
+        }
     }
 }

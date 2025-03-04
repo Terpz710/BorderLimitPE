@@ -25,6 +25,7 @@ final class WorldBorderAPI {
     protected DataConnector $db;
 
     protected array $borderSetup = [];
+    protected array $borders = [];
 
     public function __construct() {
         $this->plugin = Loader::getInstance();
@@ -37,6 +38,19 @@ final class WorldBorderAPI {
         ]);
 
         $this->db->executeGeneric("table.world_borders");
+        $this->loadBorders();
+    }
+
+    public function loadBorders() : void{
+        $this->db->executeSelect("world_borders.get_all", [], function (array $rows) {
+            foreach ($rows as $row) {
+                $this->borders[$row["world"]] = $row;
+            }
+        });
+    }
+
+    public function getStoredBorder(World $world) : ?array{
+        return $this->borders[$world->getFolderName()] ?? null;
     }
 
     public function startBorderSetup(Player $player) : void{
@@ -62,16 +76,19 @@ final class WorldBorderAPI {
         }
     }
 
-    private function saveBorder(World $world, Vector3 $pos1, Vector3 $pos2) : void{
+    public function saveBorder(World $world, Vector3 $pos1, Vector3 $pos2) : void{
         $worldName = $world->getFolderName();
 
-        $this->db->executeChange("world_borders.create", [
+        $borderData = [
             "world" => $worldName,
             "min_x" => min($pos1->getX(), $pos2->getX()),
             "max_x" => max($pos1->getX(), $pos2->getX()),
             "min_z" => min($pos1->getZ(), $pos2->getZ()),
             "max_z" => max($pos1->getZ(), $pos2->getZ())
-        ]);
+        ];
+
+        $this->borders[$worldName] = $borderData;
+        $this->db->executeChange("world_borders.create", $borderData);
     }
 
     public function getBorder(World $world, callable $callback) : void{

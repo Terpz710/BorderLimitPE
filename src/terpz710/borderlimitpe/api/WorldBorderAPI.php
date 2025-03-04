@@ -30,7 +30,7 @@ final class WorldBorderAPI {
         $this->plugin = Loader::getInstance();
     }
 
-    public function init() : void{
+    public function init(){
         $this->db = libasynql::create($this->plugin, $this->plugin->getConfig()->get("database"), [
             "sqlite" => "database/sqlite.sql",
             "mysql" => "database/mysql.sql"
@@ -100,7 +100,7 @@ final class WorldBorderAPI {
         return isset($this->borderSetup[$player->getUniqueId()->getBytes()]);
     }
 
-    public function close() : void{
+    public function close(){
         $this->db->close();
     }
 }

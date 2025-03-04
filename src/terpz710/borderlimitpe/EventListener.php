@@ -21,6 +21,7 @@ class EventListener implements Listener {
         if (Server::getInstance()->isOp($player->getName())) return;
 
         WorldBorderAPI::getInstance()->getBorder($player->getWorld(), function (?array $border) use ($event, $player) {
+
             if ($border === null) return;
 
             $pos = $player->getPosition();

@@ -96,6 +96,10 @@ final class WorldBorderAPI {
         });
     }
 
+    public function isSettingBorder(Player $player) : bool{
+        return isset($this->borderSetup[$player->getUniqueId()->getBytes()]);
+    }
+
     public function close() : void{
         $this->db->close();
     }

@@ -23,18 +23,18 @@ class EventListener implements Listener {
 
         if (Server::getInstance()->isOp($player->getName())) return;
 
-        WorldBorderAPI::getInstance()->getBorder($player->getWorld(), function (?array $border) use ($event, $player) {
+        $border = WorldBorderAPI::getInstance()->getStoredBorder($player->getWorld());
 
-            if ($border === null) return;
+        if ($border === null) return;
 
-            $pos = $player->getPosition();
-            if ($pos->getX() < $border["min_x"] || $pos->getX() > $border["max_x"] || 
-                $pos->getZ() < $border["min_z"] || $pos->getZ() > $border["max_z"]) {
-                
-                $event->cancel();
-                $player->sendMessage("§cYou cannot leave the world border!");
-            }
-        });
+        $pos = $event->getTo();
+        
+        if ($pos->getX() < $border["min_x"] || $pos->getX() > $border["max_x"] || 
+            $pos->getZ() < $border["min_z"] || $pos->getZ() > $border["max_z"]) {
+
+            $event->cancel();
+            $player->sendMessage("§cYou cannot leave the world border!");
+        }
     }
 
     public function onBlockBreak(BlockBreakEvent $event) : void{
